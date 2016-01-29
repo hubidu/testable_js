@@ -1,4 +1,4 @@
-<div>
+<div class="people">
   <h2>Results</h2>
   <div>
     People found <%= people.length %>
@@ -6,7 +6,7 @@
   <%
   $.each(people, function (i, person) {
     %>
-    <div class="person list-group-item">
+    <div class="person like list-group-item">
       <h4>
         <%- person.name %>
       </h4>

@@ -7,17 +7,32 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="page-header">Search</h1>
+    <div class="row">
+      <div class="col-md-12">
 
-    <!-- Search form -->
-    <form id="searchForm">
-      <input type="text" name="q">
-      <button>Submit</button>
-    </form>
+        <h1 class="page-header">Search</h1>
 
-    <!-- Display search results -->
-    <div id="results" class="list-group"></div>
+        <!-- Search form -->
+        <form id="searchForm" class="well">
+          <input type="text" name="q">
+          <button>Submit</button>
+        </form>
 
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-8">
+        <!-- Display search results -->
+        <div id="results" class="list-group"></div>
+      </div>
+      <div class="col-md-4 well">
+        <!-- Liked people -->
+        <h4>Like</h4>
+        <div id="liked"></div>
+      </div>
+
+    </div>
   </div>
 
 <script>
@@ -71,7 +86,7 @@
 
     resultsList.on('click', '.like', function (e) {
       e.preventDefault();
-      var name = $(this).closest('li').find('h2').text();
+      var name = $(this).closest('div').find('h4').text();
       liked.find('.no-results').remove();
       $('<li>', { text: name }).appendTo(liked);
     });
