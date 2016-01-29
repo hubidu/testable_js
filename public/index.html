@@ -1,0 +1,83 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.min.css">
+  <script src="/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/vendor/lodash/lodash.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="page-header">Search</h1>
+
+    <!-- Search form -->
+    <form id="searchForm">
+      <input type="text" name="q">
+      <button>Submit</button>
+    </form>
+
+    <!-- Display search results -->
+    <div id="results" class="list-group"></div>
+
+  </div>
+
+<script>
+  var tmplCache = {};
+
+  function loadTemplate (name) {
+  if (!tmplCache[name]) {
+    // tmplCache[name] = $.get('/templates/' + name);
+    tmplCache[name]= $.ajax({
+      url: '/templates/' + name,
+      cache: false
+    });
+  }
+  return tmplCache[name];
+  }
+
+  $(function () {
+    var resultsList = $('#results');
+    var liked = $('#liked');
+    var pending = false;
+
+    $('#searchForm').on('submit', function (e) {
+      e.preventDefault();
+
+      if (pending) { return; }
+
+      var form = $(this);
+      var query = $.trim( form.find('input[name="q"]').val() );
+
+      if (!query) { return; }
+
+      pending = true;
+
+      $.ajax('/data/search.json', {
+        data : { q: query },
+        dataType : 'json',
+        success : function (data) {
+          loadTemplate('people-detailed.tmpl').then(function (t) {
+            var tmpl = _.template(t);
+            resultsList.html( tmpl({ people : data }) );
+            pending = false;
+          });
+        }
+      });
+
+      $('<li>', {
+        'class' : 'pending',
+        html : 'Searching &hellip;'
+      }).appendTo( resultsList.empty() );
+    });
+
+    resultsList.on('click', '.like', function (e) {
+      e.preventDefault();
+      var name = $(this).closest('li').find('h2').text();
+      liked.find('.no-results').remove();
+      $('<li>', { text: name }).appendTo(liked);
+    });
+
+  });
+</script>
+
+</body>
+</html>

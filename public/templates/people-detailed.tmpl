@@ -1,0 +1,26 @@
+<div>
+  <h2>Results</h2>
+  <div>
+    People found <%= people.length %>
+  </div>
+  <%
+  $.each(people, function (i, person) {
+    %>
+    <div class="person list-group-item">
+      <h4>
+        <%- person.name %>
+      </h4>
+      <div>
+        <%- person.company %>
+      </div>
+      <div>
+        <a href="mailto:<%- person.email %>">
+          <%- person.email %>
+        </a>
+      </div>
+    </div>
+
+  <%
+  });
+  %>
+</div>
