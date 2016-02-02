@@ -2,8 +2,11 @@
 <head>
   <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap-theme.min.css">
+
   <script src="/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/vendor/lodash/lodash.js"></script>
+
+  <script src="/app/likes.js"></script>
 </head>
 <body>
   <div class="container">
@@ -59,7 +62,7 @@
 
   $(function () {
     var resultsList = $('#results');
-    var liked = $('#liked');
+    var liked$ = $('#liked');
     var pending = false;
 
     $('#searchForm').on('submit', function (e) {
@@ -95,8 +98,13 @@
     resultsList.on('click', '.like', function (e) {
       e.preventDefault();
       var name = $(this).closest('.person').find('h4').text();
+
+      var likes = new myApp.Likes(liked$)
+      likes.add(name)
+      /*
       liked.find('.no-results').remove();
       $('<li>', { text: name }).appendTo(liked);
+      */
     });
 
   });

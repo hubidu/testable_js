@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('public'));
+app.use('/app', express.static('src'));
 app.use('/vendor', express.static('node_modules'));
 
 app.listen(3000, function () {
