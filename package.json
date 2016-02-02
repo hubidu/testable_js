@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "start.watch": "node_modules/.bin/pm2 start server.js --watch --ignore-watch node_modules",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test.e2e": "node_modules/.bin/nightwatch"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +16,8 @@
     "jquery": "^2.2.0",
     "lodash": "^4.0.1",
     "pm2": "^1.0.0"
+  },
+  "devDependencies": {
+    "nightwatch": "^0.8.15"
   }
 }
