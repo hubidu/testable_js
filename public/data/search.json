@@ -8,5 +8,35 @@
     "name": "Jürgen Klopp",
     "company": "FC Liverpool",
     "email": "juergen.klopp@fc-liverpool.uk"
+  },
+  {
+    "name": "Markus Babbel",
+    "company": "VfB Stuttgart",
+    "email": "mbabbel@vfb-stuttgart.de"
+  },
+  {
+    "name": "Krassimir Balakov",
+    "company": "1. FC Kaiserslautern",
+    "email": "kb@fck.de"
+  },
+  {
+    "name": "Eddy Achterberg",
+    "company": "Schalke04",
+    "email": "achterberg@schalke-04.de"
+  },
+  {
+    "name": "Franz Beckenbauer",
+    "company": "Bayern München",
+    "email": "franz.beckenbauer@fc-bayern.de"
+  },
+  {
+    "name": "Jörg Berger",
+    "company": "Fortuna Düsseldorf",
+    "email": "joerg.berger@duesseldorf.de"
+  },
+  {
+    "name": "Rainer Bonhof",
+    "company": "Borussia Mönchengladbach",
+    "email": "rainer.bonhof@borussia.de"
   }
 ]
